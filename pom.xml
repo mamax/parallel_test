@@ -225,7 +225,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Penske-automation</projectName>
+                            <projectName>Parallel_Project</projectName>
                             <buildNumber>1</buildNumber>
                             <outputDirectory>${project.build.directory}</outputDirectory>
                             <cucumberOutput>${cucumber.final.report.dir}</cucumberOutput>
