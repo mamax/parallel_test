@@ -10,8 +10,9 @@ public class Hooks {
 
     @Before(order = 10)
     public void printScenarioName(Scenario scenario) {
-        ContextFI.setScenarioName(scenario.getName());
-        new BaseHooks().printScenarioName(scenario);
+        BaseHooks baseHooks = new BaseHooks();
+        ContextFI.setScenarioName(baseHooks.getScenarioName(scenario));
+        baseHooks.printScenarioName(scenario);
     }
 
     @After(order = 5)
