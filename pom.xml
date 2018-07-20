@@ -41,7 +41,7 @@
                 </property>
             </activation>
             <properties>
-                <maven.fork.count>0.5C</maven.fork.count>
+                <maven.fork.count>2C</maven.fork.count>
                 <!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per scenario.  FEATURE generates a runner per feature. -->
                 <cucumber.jvm.parallel.plugin.scheme>SCENARIO</cucumber.jvm.parallel.plugin.scheme>
                 <maven.failsafe.includes>**/Parallel*IT.class,**/SynchronizedGroup*.class</maven.failsafe.includes>
@@ -74,7 +74,7 @@
                             <glue>
                                 <padckadge>com.epam.products.tests</padckadge>
                             </glue>
-                            <featuresDirectory>src/test/resources/products/cucumber/gui/
+                            <featuresDirectory>src/test/resources/cucumber
                             </featuresDirectory>
                             <cucumberOutputDir>${cucumber.execution.results}</cucumberOutputDir>
                             <format>json,rerun</format>
@@ -176,7 +176,7 @@
                         </goals>
                         <configuration>
                             <classpathScope>test</classpathScope>
-                            <mainClass>ReportCollector</mainClass>
+                            <mainClass>com.epam.framework.collectors.ReportCollector</mainClass>
                             <systemProperties>
                                 <systemProperty>
                                     <key>input.json.dir</key>
@@ -197,7 +197,7 @@
                         </goals>
                         <configuration>
                             <classpathScope>test</classpathScope>
-                            <mainClass>LogCollector</mainClass>
+                            <mainClass>com.epam.framework.collectors.LogCollector</mainClass>
                             <systemProperties>
                                 <systemProperty>
                                     <key>input.log4j.log.dir</key>
