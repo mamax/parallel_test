@@ -41,7 +41,7 @@
                 </property>
             </activation>
             <properties>
-                <maven.fork.count>2C</maven.fork.count>
+                <maven.fork.count>0.5C</maven.fork.count>
                 <!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per scenario.  FEATURE generates a runner per feature. -->
                 <cucumber.jvm.parallel.plugin.scheme>SCENARIO</cucumber.jvm.parallel.plugin.scheme>
                 <maven.failsafe.includes>**/Parallel*IT.class,**/SynchronizedGroup*.class</maven.failsafe.includes>
@@ -63,9 +63,6 @@
                                 <configuration>
                                     <tags>
                                         <tag>~@SynchronizedGroup1</tag>
-                                        <tag>~@SynchronizedGroup2</tag>
-                                        <tag>~@SynchronizedGroup3</tag>
-                                        <tag>~@SynchronizedGroup4</tag>
                                     </tags>
                                 </configuration>
                             </execution>
