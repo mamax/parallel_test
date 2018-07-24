@@ -2,6 +2,8 @@ package com.epam.products.tests;
 
 import com.epam.framework.Log;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
+import org.testng.Assert;
 
 /**
  * #Summary:
@@ -13,7 +15,7 @@ import cucumber.api.java.en.Given;
 public class MyStepsDef {
     private void sleep(int sec) {
         try {
-            Thread.sleep(sec * 1_000);
+            Thread.sleep(sec * 1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -34,5 +36,10 @@ public class MyStepsDef {
         Log.info(String.format("The feature number is '%s'", featureNumber));
         Log.info("=====================================================");
         sleep(sec);
+    }
+
+    @When("^Must be failed$")
+    public void mustBeFailed()   {
+        Assert.fail("FAILED scenario.");
     }
 }

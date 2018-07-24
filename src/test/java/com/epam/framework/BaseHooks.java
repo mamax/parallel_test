@@ -16,7 +16,7 @@ public class BaseHooks {
     }
 
     public void printVerdict(Scenario scenario) {
-        String verdict = scenario.getStatus().toUpperCase();
+        String verdict = scenario.getStatus().toString().toUpperCase();
         String line = String.format("===SCENARIO %s: " + scenario.getName() + "===", verdict);
         int length = line.length();
         Log.info(StringUtils.repeat("=", length));
