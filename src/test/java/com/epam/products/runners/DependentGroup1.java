@@ -7,9 +7,9 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
         strict = true,
         features = "src/test/resources/cucumber/",
         glue = "com.epam.products.tests",
-        tags = {"@SynchronizedGroup1","~@Ignore"},
+        tags = {"@DependentGroup1","~@Ignore"},
         plugin = {"pretty",
-                "json:target/cucumber-results/SynchronizedGroup1.json",
-                "rerun:target/cucumber-results/SynchronizedGroup1.txt"})
-public class SynchronizedGroup1 extends AbstractTestNGCucumberTests {
+                "json:target/cucumber-results/DependentGroup1.json",
+                "rerun:target/cucumber-results/Failed_DependentGroup1.txt"})
+public class DependentGroup1 extends AbstractTestNGCucumberTests {
 }

@@ -15,7 +15,7 @@ import org.testng.Assert;
 public class MyStepsDef {
     private void sleep(int sec) {
         try {
-            Thread.sleep(sec * 1);
+            Thread.sleep(sec * 10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

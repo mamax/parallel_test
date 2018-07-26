@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <cucumber.execution.results>${project.build.directory}/cucumber-results/</cucumber.execution.results>
-        <cucumber.final.report.dir>${project.build.directory}/report-json/</cucumber.final.report.dir>
+        <cucumber.final.report.dir>${project.build.directory}/cucumber-results/</cucumber.final.report.dir>
         <rerun.file.name>rerun_failed_scenarios.txt</rerun.file.name>
         <testng.version>6.13.1</testng.version>
         <cucumber.version>1.2.5</cucumber.version>
@@ -29,6 +29,8 @@
         <output.log4j.log.dir>${project.build.directory}/final-log-file/</output.log4j.log.dir>
         <maven.artifact.generation.phase>post-integration-test</maven.artifact.generation.phase>
         <google-guava.version>23.6-jre</google-guava.version>
+        <maven.failsafe.includes>**/SequentialRunner.class</maven.failsafe.includes>
+        <skip.rerun.failed.scenario>true</skip.rerun.failed.scenario>
     </properties>
 
     <profiles>
@@ -45,7 +47,8 @@
                 <maven.fork.count>0.5C</maven.fork.count>
                 <!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per scenario.  FEATURE generates a runner per feature. -->
                 <cucumber.jvm.parallel.plugin.scheme>SCENARIO</cucumber.jvm.parallel.plugin.scheme>
-                <maven.failsafe.includes>**/Parallel*IT.class,**/SynchronizedGroup*.class</maven.failsafe.includes>
+                <maven.failsafe.includes>**/Parallel*IT.class,**/DependentGroup*.class</maven.failsafe.includes>
+                <cucumber.final.report.dir>${project.build.directory}/report-json/</cucumber.final.report.dir>
             </properties>
             <build>
                 <plugins>
@@ -63,7 +66,8 @@
                                 </goals>
                                 <configuration>
                                     <tags>
-                                        <tag>~@SynchronizedGroup1</tag>
+                                        <tag>~@DependentGroup1</tag>
+                                        <tag>~@DependentGroup2</tag>
                                         <tag>~@Ignore</tag>
                                     </tags>
                                 </configuration>
@@ -73,8 +77,7 @@
                             <glue>
                                 <padckadge>com.epam.products.tests</padckadge>
                             </glue>
-                            <featuresDirectory>src/test/resources/cucumber
-                            </featuresDirectory>
+                            <featuresDirectory>src/test/resources/cucumber</featuresDirectory>
                             <cucumberOutputDir>${cucumber.execution.results}</cucumberOutputDir>
                             <format>json,rerun</format>
                             <strict>true</strict>
@@ -135,6 +138,7 @@
                             <goal>integration-test</goal>
                         </goals>
                         <configuration>
+                            <skip>${skip.rerun.failed.scenario}</skip>
                             <includes>
                                 <include>**/Rerun.class</include>
                             </includes>

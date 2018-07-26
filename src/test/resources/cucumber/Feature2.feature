@@ -1,16 +1,12 @@
 @TestFeature2
-#@Ignore
 Feature: Test Feature 2 for parallel purpose
 
   Background:
     Given BackGround step sleep "5" sec
 
-  @SynchronizedGroup1
-  Scenario Outline: Test Scenario 1 in TestFeature 2
-    Given Step with sleep "<sleep_sec>" sec in Scenario "<scenario_number>" of TestFeature "<feature_number>"
-    Examples:
-      | sleep_sec | scenario_number | feature_number |
-      | 5         | 1               | 2              |
+  @DependentGroup2
+  Scenario: Test Scenario 1 in TestFeature 2
+    Given Step with sleep "5" sec in Scenario "1" of TestFeature "1"
 
   Scenario Outline: Test Scenario 2 in TestFeature 2
     Given Step with sleep "<sleep_sec>" sec in Scenario "<scenario_number>" of TestFeature "<feature_number>"
@@ -19,8 +15,12 @@ Feature: Test Feature 2 for parallel purpose
       | sleep_sec | scenario_number | feature_number |
       | 5         | 2               | 2              |
 
-  Scenario Outline: Test Scenario 33 in TestFeature 2
+  @DependentGroup1
+  Scenario: Test Scenario 15 in TestFeature 2
+    Given Step with sleep "5" sec in Scenario "15" of TestFeature "2"
+
+  Scenario Outline: Test Scenario 25 in TestFeature 2
     Given Step with sleep "<sleep_sec>" sec in Scenario "<scenario_number>" of TestFeature "<feature_number>"
     Examples:
       | sleep_sec | scenario_number | feature_number |
-      | 5         | 33              | 2              |
+      | 5         | 25              | 2              |
