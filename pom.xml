@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <cucumber.execution.results>${project.build.directory}/cucumber-results/</cucumber.execution.results>
-        <cucumber.final.report.dir>${project.build.directory}/cucumber-results/</cucumber.final.report.dir>
+        <cucumber.final.report.dir>${project.build.directory}/report-json/</cucumber.final.report.dir>
         <rerun.file.name>rerun_failed_scenarios.txt</rerun.file.name>
         <testng.version>6.13.1</testng.version>
         <cucumber.version>1.2.5</cucumber.version>
