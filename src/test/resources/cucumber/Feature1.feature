@@ -2,25 +2,68 @@
 Feature: Test Feature 1 for parallel purpose
 
   Background:
-    Given BackGround step sleep "5" sec
+    Given Background step with sleep
 
-  @DependentGroup1
+  @DependentGroupA
   Scenario: Test Scenario 1 in TestFeature 1
-    Given Step with sleep "5" sec in Scenario "1" of TestFeature "1"
-    When Must be failed
+    Given Step with sleep
+    Then Must be failed
 
-  Scenario Outline: Test Scenario 2 in TestFeature 1
-    Given Step with sleep "<sleep_sec>" sec in Scenario "<scenario_number>" of TestFeature "<feature_number>"
-    Examples:
-      | sleep_sec | scenario_number | feature_number |
-      | 5         | 2               | 1              |
+  Scenario: Test Scenario 2 in TestFeature 1
+    Given Step with sleep
 
-  Scenario Outline: Test Scenario 33 in TestFeature 1
-    Given Step with sleep "<sleep_sec>" sec in Scenario "<scenario_number>" of TestFeature "<feature_number>"
-    Examples:
-      | sleep_sec | scenario_number | feature_number |
-      | 5         | 33              | 1              |
+  Scenario: Test Scenario 3 in TestFeature 1
+    Given Step with sleep
 
-  @DependentGroup2
-  Scenario: Test Scenario 100 in TestFeature 1
-    Given Step with sleep "5" sec in Scenario "100" of TestFeature "1"
+  Scenario: Test Scenario 4 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 5 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 6 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 7 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 8 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 9 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 10 in TestFeature 1
+    Given Step with sleep
+
+  @DependentGroupB
+  Scenario: Test Scenario 11 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 12 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 13 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 14 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 15 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 16 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 17 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 18 in TestFeature 1
+    Given Step with sleep
+
+  @DependentGroupA
+  Scenario: Test Scenario 19 in TestFeature 1
+    Given Step with sleep
+
+  Scenario: Test Scenario 20 in TestFeature 1
+    Given Step with sleep
