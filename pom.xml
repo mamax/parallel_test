@@ -74,6 +74,9 @@
                             </execution>
                         </executions>
                         <configuration>
+                            <customVmTemplate>
+                                src/test/java/com/epam/framework/runner/vmtemplates/cucumber-testng-runner.java.vm
+                            </customVmTemplate>
                             <glue>
                                 <padckadge>com.epam.products.tests</padckadge>
                             </glue>

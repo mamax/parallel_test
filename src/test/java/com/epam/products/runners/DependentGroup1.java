@@ -1,7 +1,7 @@
 package com.epam.products.runners;
 
+import com.epam.framework.runner.ExtendedAbstractTestNGCucumberTests;
 import cucumber.api.CucumberOptions;
-import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @CucumberOptions(
         strict = true,
@@ -11,5 +11,5 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
         plugin = {"pretty",
                 "json:target/cucumber-results/DependentGroup1.json",
                 "rerun:target/cucumber-results/Failed_DependentGroup1.txt"})
-public class DependentGroup1 extends AbstractTestNGCucumberTests {
+public class DependentGroup1 extends ExtendedAbstractTestNGCucumberTests {
 }
