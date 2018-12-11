@@ -30,7 +30,7 @@
         <maven.artifact.generation.phase>post-integration-test</maven.artifact.generation.phase>
         <google-guava.version>23.6-jre</google-guava.version>
         <maven.failsafe.includes>**/SequentialRunner.class</maven.failsafe.includes>
-        <skip.rerun.failed.scenario>false</skip.rerun.failed.scenario>
+        <skip.rerun.failed.scenario>true</skip.rerun.failed.scenario>
     </properties>
 
     <profiles>

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  */
 public class RetryAnalyzer implements IRetryAnalyzer {
     private int counter = 0;
-    private final int retryLimit = 5;
+    private final int retryLimit = 1;
     private String scenarioSign = "";
 
 //    public RetryAnalyzer() {

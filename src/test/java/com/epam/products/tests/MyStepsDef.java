@@ -19,7 +19,7 @@ public class MyStepsDef {
 
     private void sleep(int sec) {
         try {
-            Thread.sleep(sec * 1000);
+            Thread.sleep(sec * 10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
