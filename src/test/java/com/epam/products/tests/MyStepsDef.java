@@ -2,7 +2,7 @@ package com.epam.products.tests;
 
 import com.epam.framework.Log;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
+import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
 /**
@@ -13,33 +13,35 @@ import org.testng.Assert;
  * #Comments:
  */
 public class MyStepsDef {
+    private static final boolean MAKE_STEP_FAIL = true;
+    private static final int BACKGROUND_SLEEP = 0;
+    private static final int STEP_SLEEP = 1;
+
     private void sleep(int sec) {
         try {
-            Thread.sleep(sec * 10);
+            Thread.sleep(sec * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    @Given("^BackGround step sleep \"([^\"]*)\" sec$")
-    public void backgroundStep(int sec) {
-        Log.info(String.format("This is BackGround step with sleep '%s' seconds", sec));
-        sleep(sec);
+    @Given("^Background step with sleep$")
+    public void backgroundStep() {
+        Log.info(String.format("This is Background step with sleep '%s' seconds", BACKGROUND_SLEEP));
+        sleep(BACKGROUND_SLEEP);
 
     }
 
-    @Given("^Step with sleep \"([^\"]*)\" sec in Scenario \"([^\"]*)\" of TestFeature \"([^\"]*)\"$")
-    public void stepNumberInScenarioOfTestFeature(int sec, String scenarioNumber, String featureNumber) {
+    @Given("^Step with sleep$")
+    public void stepNumberInScenarioOfTestFeature() {
         Log.info("=====================================================");
-        Log.info(String.format("The step with sleep '%s' sec", sec));
-        Log.info(String.format("The scenario number is '%s'", scenarioNumber));
-        Log.info(String.format("The feature number is '%s'", featureNumber));
+        Log.info(String.format("The step with '%s' sec sleep.", STEP_SLEEP));
         Log.info("=====================================================");
-        sleep(sec);
+        sleep(STEP_SLEEP);
     }
 
-    @When("^Must be failed$")
-    public void mustBeFailed()   {
-        Assert.fail("FAILED scenario.");
+    @Then("^Must be failed$")
+    public void mustBeFailed() {
+        Assert.assertFalse(MAKE_STEP_FAIL, "FAILED scenario.");
     }
 }
