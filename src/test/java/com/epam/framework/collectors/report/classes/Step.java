@@ -1,6 +1,5 @@
 package com.epam.framework.collectors.report.classes;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -19,7 +18,6 @@ public class Step {
     private List<Output> outputs;
     @JsonProperty("doc_string")
     private DocString doc_string = null;
-
 
     public List<Long> getMatchedColumns() {
         return matchedColumns;

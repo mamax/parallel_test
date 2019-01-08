@@ -1,11 +1,13 @@
 package com.epam.framework;
 
-import java.io.File;
-
-import com.epam.framework.utils.DirUtils;
 import com.epam.framework.context.ContextFI;
+import com.epam.framework.utils.DirUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.log4j.*;
+import org.apache.log4j.Appender;
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Logger;
+
+import java.io.File;
 
 public class Log {
     private static String scenarioName = "";

@@ -28,7 +28,7 @@ public class DirUtils {
         }
     }
 
-    public static String normalizeFileName(String fileName){
+    public static String normalizeFileName(String fileName) {
         return fileName.replaceAll("[\\\\/:*?\"<>|]", "");
     }
 }

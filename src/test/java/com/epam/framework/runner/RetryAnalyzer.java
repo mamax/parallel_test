@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  */
 public class RetryAnalyzer implements IRetryAnalyzer {
     private int counter = 0;
-    private final int retryLimit = 1;
+    private final int retryLimit = 0;
     private String scenarioSign = "";
 
 //    public RetryAnalyzer() {
@@ -50,7 +50,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
             partOfMsg = String.format("'%s' of '%s'",
                     counter, retryLimit);
         }
-        Log.info(String.format("%s run for scenario '%s' FAILED. Scenario Location: '%s'",
+        Log.info(String.format("%s run for scenario '%s' FAILED. Scenario details: '%s'",
                 partOfMsg, scenarioName, getScenarioSign(iTestResult)));
     }
 
@@ -59,8 +59,9 @@ public class RetryAnalyzer implements IRetryAnalyzer {
     }
 
     private String getScenarioSign(ITestResult iTestResult) {
+        String name = getCurrentPickleEvent(iTestResult).getName();
         return getCurrentPickleEvent(iTestResult).getLocations().stream()
-                .map(pickleLocation -> String.format("Line: %s, column %s", pickleLocation.getLine(), pickleLocation.getColumn()))
+                .map(pickleLocation -> String.format("Name: '%s' [Line: %s, column %s]", name, pickleLocation.getLine(), pickleLocation.getColumn()))
                 .collect(Collectors.toList())
                 .toString();
     }

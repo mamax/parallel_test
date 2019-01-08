@@ -1,7 +1,7 @@
 package com.epam.products.tests;
 
 import com.epam.framework.BaseHooks;
-import com.epam.framework.context.*;
+import com.epam.framework.context.ContextFI;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;

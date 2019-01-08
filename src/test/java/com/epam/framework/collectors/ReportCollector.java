@@ -1,9 +1,8 @@
 package com.epam.framework.collectors;
 
-
-import com.epam.framework.exceptions.ReportCollectorException;
 import com.epam.framework.collectors.report.classes.Element;
 import com.epam.framework.collectors.report.classes.Feature;
+import com.epam.framework.exceptions.ReportCollectorException;
 import com.epam.framework.utils.JsonUtils;
 import javafx.util.Pair;
 import org.apache.commons.io.FilenameUtils;

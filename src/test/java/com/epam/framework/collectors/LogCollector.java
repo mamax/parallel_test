@@ -1,6 +1,5 @@
 package com.epam.framework.collectors;
 
-
 import com.epam.framework.Log;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;

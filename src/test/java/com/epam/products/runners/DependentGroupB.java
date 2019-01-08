@@ -7,7 +7,7 @@ import cucumber.api.CucumberOptions;
         strict = true,
         features = "src/test/resources/cucumber/",
         glue = "com.epam.products.tests",
-        tags = {"@DependentGroupB","~@Ignore"},
+        tags = {"@DependentGroupB", "~@Ignore"},
         plugin = {"pretty",
                 "json:target/cucumber-results/DependentGroupB.json",
                 "rerun:target/cucumber-results/Failed_DependentGroup2.txt"})

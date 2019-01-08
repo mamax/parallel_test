@@ -1,6 +1,6 @@
 package com.epam.framework.exceptions;
 
-public class ReportCollectorException extends RuntimeException{
+public class ReportCollectorException extends RuntimeException {
     public ReportCollectorException() {
         super();
     }

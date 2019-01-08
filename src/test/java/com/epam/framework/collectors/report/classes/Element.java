@@ -16,7 +16,6 @@ public class Element {
     private List<Step> steps;
     private List<Tag> tags;
 
-
     private Status elementStatus = null;
     private Status beforeStatus = null;
     private Status afterStatus = null;
