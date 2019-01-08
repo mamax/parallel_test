@@ -10,12 +10,10 @@ import org.apache.log4j.Logger;
 import java.io.File;
 
 public class Log {
-    private static String scenarioName = "";
     private static final String FILE_APPENDER_NAME = "file";
     private static final String BASE_LOG_PATH;
     private static final String BASE_LOG_NAME;
     private static final String LOG_EXTENSION;
-    public static String logFileName;
 
     static {
         Appender appender = Logger.getRootLogger().getAppender(FILE_APPENDER_NAME);
@@ -32,28 +30,16 @@ public class Log {
         }
     }
 
-    public static void info(Object message) {
+    public static synchronized void info(Object message) {
         String name = getCallerClassName();
         Logger log = getLog(name);
         log.info(message);
     }
 
-    public static void error(Object message) {
+    public static synchronized void error(Object message) {
         String name = getCallerClassName();
         Logger log = getLog(name);
         log.error(message);
-    }
-
-    public static void warn(Object message) {
-        String name = getCallerClassName();
-        Logger log = getLog(name);
-        log.warn(message);
-    }
-
-    public static void debug(String message) {
-        String name = getCallerClassName();
-        Logger log = Logger.getLogger(name);
-        log.debug(message);
     }
 
     private static String getCallerClassName() {
@@ -67,16 +53,12 @@ public class Log {
         }
     }
 
-    private static void intializeLogger() {
-        changeFileNameInFileAppenderOfRootLogger(scenarioName);
-    }
-
     private static void changeFileNameInFileAppenderOfRootLogger(String scenarioName) {
         Appender appender = Logger.getRootLogger().getAppender(FILE_APPENDER_NAME);
         if (appender instanceof FileAppender) {
             FileAppender fileAppender = ((FileAppender) appender);
+//            TODO: нужен рефакторинг, т.к. при создании каждой строки логирования, создается новый экземпляр File объекта.
             String fileName = new File(FilenameUtils.concat(BASE_LOG_PATH, scenarioName + "." + LOG_EXTENSION)).getAbsolutePath();
-            logFileName = fileName;
             fileAppender.setFile(fileName);
             fileAppender.activateOptions();
         } else {
@@ -85,22 +67,14 @@ public class Log {
     }
 
     private static String getLogFileName() {
-        String logFileName = BASE_LOG_NAME;
-        try {
-            String scenarioName = ContextFI.getScenarioName();
-            logFileName = scenarioName == null ? logFileName : scenarioName;
-        } catch (NullPointerException e) {
-            System.out.println(String.format("At this stage scenario name does not defined. '%s.log' will be used.", logFileName));
-        }
+        String scenarioName = ContextFI.getScenarioName();
+        String logFileName = scenarioName == null ? BASE_LOG_NAME : scenarioName;
         return DirUtils.normalizeFileName(logFileName);
     }
 
     private static Logger getLog(String name) {
         String scenarioNameNew = getLogFileName();
-        if (!scenarioName.equals(scenarioNameNew)) {
-            scenarioName = scenarioNameNew;
-            intializeLogger();
-        }
+        changeFileNameInFileAppenderOfRootLogger(scenarioNameNew);
         return Logger.getLogger(name);
     }
 }
