@@ -4,8 +4,8 @@ import com.epam.framework.collectors.report.classes.Element;
 import com.epam.framework.collectors.report.classes.Feature;
 import com.epam.framework.exceptions.ReportCollectorException;
 import com.epam.framework.utils.JsonUtils;
-import javafx.util.Pair;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -99,7 +99,7 @@ public class ReportCollector extends BaseCollector {
             elementList.sort(Comparator.comparing(Element::getLine));
         } else if (elementList.size() % 2 == 0) {
             for (int i = 0; i < elementList.size(); i = i + 2) {
-                Pair<Element, Element> elementPair = new Pair<>(elementList.get(i), elementList.get(i + 1));
+                Pair<Element, Element> elementPair = Pair.of(elementList.get(i), elementList.get(i + 1));
                 pairBackgroundScenario.add(elementPair);
             }
             pairBackgroundScenario.sort(Comparator.comparing(o -> o.getValue().getLine()));
